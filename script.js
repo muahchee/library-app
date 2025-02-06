@@ -19,6 +19,10 @@ function displayBooks(){
   
   for (let i = 0; i < myLibrary.length; i++){
     const div = document.createElement("div");
+
+    //gives each card an index number, so it can be easily deleted
+    div.dataset.indexNumber = i;
+
     div.setAttribute("class", "card")
 
     for (let j = 0; j < Object.keys(myLibrary[i]).length; j++){
@@ -54,7 +58,11 @@ function makeRemoveBtn(){
   removeBtn.setAttribute("class", "remove-book");
 
   removeBtn.addEventListener("click", function (e) {
+    //remove from dom
     e.target.parentElement.remove()
+
+    //remove from array
+    myLibrary.splice(e.target.parentElement.dataset.indexNumber, 1);
   });
 
   return removeBtn;
