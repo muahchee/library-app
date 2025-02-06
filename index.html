@@ -14,23 +14,31 @@
     <button class="close-dialog" autofocus>X</button>
     <form action="">
 
-      <label for="title">Title:</label>
-      <input type="text" id="title" name="title">
+      <p>
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title">
+      </p>
 
-      <label for="author">Author:</label>
-      <input type="text" id="author" name="author">
+      <p>
+        <label for="author">Author:</label>
+        <input type="text" id="author" name="author">
+      </p>
 
-      <label for="pages">Pages:</label>
-      <input type="tel" id="pages" name="pages">
+      <p>
+        <label for="pages">Pages:</label>
+        <input type="tel" id="pages" name="pages">
+      </p>
 
-      <label for="status">Status:</label>
-      <div class="select-wrapper">
-        <select name="status" id="status">
-          <option value="finished" selected>Finished</option>
-          <option value="reading">Reading</option>
-          <option value="unread">Unread</option>
-          <option value="dropped">Dropped</option>
-        </select>
+      <div>
+        <label for="status">Status:</label>
+        <div class="select-wrapper">
+          <select name="status" id="status">
+            <option value="finished" selected>Finished</option>
+            <option value="reading">Reading</option>
+            <option value="unread">Unread</option>
+            <option value="dropped">Dropped</option>
+          </select>
+        </div>
       </div>
 
       <button class="submit" type="submit">Add Book</button>

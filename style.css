@@ -23,8 +23,9 @@ img, picture, video, canvas, svg {
 }
 
 /* 6. Inherit fonts for form controls */
-input, button, textarea, select {
+label, input, button, textarea, select {
   font: inherit;
+  display: block;
 }
 
 /* 7. Avoid text overflows */
@@ -108,20 +109,21 @@ dialog{
   border-radius: 10px 0 0 10px;
   overflow-y: scroll;
   scrollbar-color: var(--dark) var(--light);
-  padding: 30px 18px;
+  padding: 40px 25px;
 
 }
 
 form{
   display: flex;
   flex-direction: column;
+  gap: 30px;
 
   position: relative;
 }
 
 input, select{
   appearance: none;
-  margin-bottom: 16px;
+
   background-color: inherit;
   color: inherit;
 }
@@ -143,6 +145,7 @@ select{
 .select-wrapper{
   position: relative;
   margin-top: 10px;
+
 }
 
 .select-wrapper::after{
@@ -155,9 +158,6 @@ select{
 
 label{
   font-size: 1.3rem;
-  display: inline;
-  padding: 3px 10px 0 10px;
-  margin-top: 20px;
 }
 
 .close-dialog{
@@ -175,6 +175,7 @@ button.submit{
   color: var(--light);
   border: 3px solid var(--dark);
   font-weight: bold;
+
   padding: 10px 20px;
   cursor: pointer;
 }
