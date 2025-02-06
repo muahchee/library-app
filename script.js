@@ -183,7 +183,7 @@ function displayAddedBook(){
     div.appendChild(makeRemoveBtn());
 
     //setting initial fave stars
-    if (div.querySelector("p:last-of-type").textContent === "yes"){
+    if (div.querySelector("p:last-of-type").textContent === "Yes"){
       div.querySelector(".star").textContent = "★";
     } else{
       div.querySelector(".star").textContent = "☆";

@@ -110,8 +110,8 @@ dialog{
   color: var(--dark);
 
   border-radius: 15px 0 0 0;
-  overflow-y: scroll;
-  scrollbar-color: var(--dark) var(--light);
+  /* overflow-y: scroll;
+  scrollbar-color: var(--dark) var(--light); */
   padding: 40px 25px;
 
 }
@@ -165,12 +165,13 @@ label{
 
 .close-dialog{
   position: absolute;
-  right: 0;
+  right: 5px;
   top: 3px;
 
   background-color: var(--dark);
   color: var(--light);
   font-weight: bold;
+  cursor: pointer;
 }
 
 button.submit{
@@ -192,7 +193,7 @@ button.submit:focus{
 }
 
 .full-wrap{
-  width: 60%;
+  width: min(90%, 1000px);
 
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 300px));
@@ -212,6 +213,10 @@ button.submit:focus{
   overflow-y: scroll;
   scrollbar-color: var(--light) var(--light);
   position: relative;
+}
+
+.card p:first-of-type{
+  font-weight: bold;
 }
 
 button.star{
