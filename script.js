@@ -44,11 +44,11 @@ function displayBooks(){
 };
 
 
-addBookToLibrary("There's No Such Thing as an Easy Job", "Kikuko Tsumura", 416, "finished");
-addBookToLibrary("If You Should Fail", "Joe Moran", 168, "finished");
-addBookToLibrary("The Myth of Sisyphus and Other Essays", "Albert Camus", 224, "reading");
-addBookToLibrary("Semicolon: The Past, Present, and Future of a Misunderstood Mark", "Cecelia Watson", 224, "reading");
-addBookToLibrary("Sweet Bean Paste", "Durian Sukegawa", 224, "unread");
+addBookToLibrary("There's No Such Thing as an Easy Job", "Kikuko Tsumura", 416, "Finished");
+addBookToLibrary("If You Should Fail", "Joe Moran", 168, "Finished");
+addBookToLibrary("The Myth of Sisyphus and Other Essays", "Albert Camus", 224, "Reading");
+addBookToLibrary("Semicolon: The Past, Present, and Future of a Misunderstood Mark", "Cecelia Watson", 224, "Reading");
+addBookToLibrary("Sweet Bean Paste", "Durian Sukegawa", 224, "Unread");
 
 displayBooks();
 
