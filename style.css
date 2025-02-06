@@ -52,6 +52,7 @@ h1, h2, h3, h4, h5, h6 {
 *{
   --light: #b8c2b9;
   --dark: #382b26;
+  --warning: #752020;
 }
 
 body{
@@ -194,7 +195,7 @@ button.submit:focus{
 
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 300px));
-  grid-auto-rows: 380px;
+  grid-auto-rows: 430px;
   gap: 50px;
 
   margin-bottom: 50px;
@@ -222,4 +223,24 @@ button.submit:focus{
 
 .card p{
   margin-bottom: 10px;
+}
+
+button.remove-book{
+  margin: auto;
+
+  background-color: var(--light);
+  color: var(--warning);
+  border: 3px dashed var(--warning);
+  border-radius: 10px;
+  font-weight: bold;
+
+  padding: 5px 20px;
+  cursor: pointer;
+}
+
+button.remove-book:hover,
+button.remove-book:focus{
+  background-color: var(--warning);
+  color: var(--light);
+  border: 3px solid var(--warning);
 }

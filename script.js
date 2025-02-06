@@ -39,18 +39,27 @@ function displayBooks(){
       div.appendChild(h2);
       div.appendChild(p);
     }
+
+    //button to remove card    
+    div.appendChild(makeRemoveBtn());
+    
     fullWrap.appendChild(div)
+
   }
 };
 
+function makeRemoveBtn(){
+  const removeBtn = document.createElement("button");
+  removeBtn.textContent = "remove book";
+  removeBtn.setAttribute("class", "remove-book");
 
-addBookToLibrary("There's No Such Thing as an Easy Job", "Kikuko Tsumura", 416, "Finished");
-addBookToLibrary("If You Should Fail", "Joe Moran", 168, "Finished");
-addBookToLibrary("The Myth of Sisyphus and Other Essays", "Albert Camus", 224, "Reading");
-addBookToLibrary("Semicolon: The Past, Present, and Future of a Misunderstood Mark", "Cecelia Watson", 224, "Reading");
-addBookToLibrary("Sweet Bean Paste", "Durian Sukegawa", 224, "Unread");
+  removeBtn.addEventListener("click", function (e) {
+    e.target.parentElement.remove()
+  });
 
-displayBooks();
+  return removeBtn;
+}
+
 
 // user adds book
 
@@ -94,6 +103,10 @@ function displayAddedBook(){
       div.appendChild(h2);
       div.appendChild(p);
     }
+
+    //button to remove card   
+    div.appendChild(makeRemoveBtn());
+
     fullWrap.appendChild(div)
   } 
 }
@@ -116,3 +129,12 @@ submitButton.addEventListener("click", () =>{
   document.querySelector("#pages").value = "";
   document.querySelector("#status").value = 'finished';
 });
+
+// initial books
+addBookToLibrary("There's No Such Thing as an Easy Job", "Kikuko Tsumura", 416, "Finished");
+addBookToLibrary("If You Should Fail", "Joe Moran", 168, "Finished");
+addBookToLibrary("The Myth of Sisyphus and Other Essays", "Albert Camus", 224, "Reading");
+addBookToLibrary("Semicolon: The Past, Present, and Future of a Misunderstood Mark", "Cecelia Watson", 224, "Reading");
+addBookToLibrary("Sweet Bean Paste", "Durian Sukegawa", 224, "Unread");
+
+displayBooks();
