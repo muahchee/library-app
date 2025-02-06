@@ -1,14 +1,24 @@
 const myLibrary = [];
 
-function Book(title, author, pages, status){
+function Book(title, author, pages, status, fave){
   this.title = title,
   this.author = author,
   this.pages = pages,
-  this.status = status
+  this.status = status;
+
+  FaveBook.call(this, fave);
 }
 
-function addBookToLibrary(title, author, pages, status){
-  const newBook = new Book(title, author, pages, status);
+function FaveBook(fave){
+  this.fave = fave;
+
+
+}
+
+Object.setPrototypeOf(Book.prototype, FaveBook.prototype);
+
+function addBookToLibrary(title, author, pages, status, fave){
+  const newBook = new Book(title, author, pages, status, fave);
 
   myLibrary.push(newBook);
 }
@@ -24,6 +34,9 @@ function displayBooks(){
     div.dataset.indexNumber = i;
 
     div.setAttribute("class", "card")
+
+    //add star fave button on card
+    div.appendChild(makeFaveBtn());
 
     for (let j = 0; j < Object.keys(myLibrary[i]).length; j++){
       
@@ -46,11 +59,58 @@ function displayBooks(){
 
     //button to remove card    
     div.appendChild(makeRemoveBtn());
+
+
+    //setting initial fave stars
+    if ( div.querySelector("p:last-of-type").textContent === "Yes"){
+      div.querySelector(".star").textContent = "★";
+    } else{
+      div.querySelector(".star").textContent = "☆";
+    }
     
     fullWrap.appendChild(div)
 
   }
 };
+
+
+function makeFaveBtn(){
+  const faveBtn = document.createElement("button");
+
+  function currentStar(e){
+
+    if (e.target.parentElement.querySelector(".star").textContent === "☆"){
+
+      //change star
+      e.target.parentElement.querySelector(".star").textContent = "★"
+
+      //change fave text
+      e.target.parentElement.querySelector("p:last-of-type").textContent = "Yes";
+
+    } else{
+      e.target.parentElement.querySelector(".star").textContent = "☆"
+
+      e.target.parentElement.querySelector("p:last-of-type").textContent = "No";
+    }
+  }
+
+  function initialStars(){
+    if ( div.querySelector("p:last-of-type").textContent === "Yes"){
+      div.querySelector(".star").textContent = "★";
+    } else{
+      div.querySelector(".star").textContent = "☆";
+    }
+  }
+
+  faveBtn.textContent = "☆";
+  faveBtn.setAttribute("class", "star");
+
+  faveBtn.addEventListener("click", function (e){
+    faveBtn.value = currentStar(e);
+  })
+
+  return faveBtn;
+}
 
 function makeRemoveBtn(){
   const removeBtn = document.createElement("button");
@@ -91,7 +151,14 @@ const submitButton = document.querySelector(".submit");
 function displayAddedBook(){
   for (let i = myLibrary.length - 1; i < myLibrary.length; i++){
     const div = document.createElement("div");
-    div.setAttribute("class", "card")
+
+    //gives each card an index number, so it can be easily deleted
+    div.dataset.indexNumber = i;
+
+    div.setAttribute("class", "card");
+
+    //add star fave button on card
+    div.appendChild(makeFaveBtn());
 
     for (let j = 0; j < Object.keys(myLibrary[i]).length; j++){
       
@@ -115,6 +182,13 @@ function displayAddedBook(){
     //button to remove card   
     div.appendChild(makeRemoveBtn());
 
+    //setting initial fave stars
+    if ( div.querySelector("p:last-of-type").textContent === "Yes"){
+      div.querySelector(".star").textContent = "★";
+    } else{
+      div.querySelector(".star").textContent = "☆";
+    }
+
     fullWrap.appendChild(div)
   } 
 }
@@ -126,8 +200,9 @@ submitButton.addEventListener("click", () =>{
   const newAuthor = document.querySelector("#author").value;
   const newPages = document.querySelector("#pages").value;
   const newStatus = document.querySelector("#status").value;
+  const newFave = document.querySelector('#fave').value;
 
-  addBookToLibrary(newTitle, newAuthor, newPages, newStatus)
+  addBookToLibrary(newTitle, newAuthor, newPages, newStatus, newFave)
   
   displayAddedBook();
 
@@ -136,13 +211,15 @@ submitButton.addEventListener("click", () =>{
   document.querySelector("#author").value = "";
   document.querySelector("#pages").value = "";
   document.querySelector("#status").value = 'finished';
+  document.querySelector("#fave").value = 'no';
+
 });
 
 // initial books
-addBookToLibrary("There's No Such Thing as an Easy Job", "Kikuko Tsumura", 416, "Finished");
-addBookToLibrary("If You Should Fail", "Joe Moran", 168, "Finished");
-addBookToLibrary("The Myth of Sisyphus and Other Essays", "Albert Camus", 224, "Reading");
-addBookToLibrary("Semicolon: The Past, Present, and Future of a Misunderstood Mark", "Cecelia Watson", 224, "Reading");
-addBookToLibrary("Sweet Bean Paste", "Durian Sukegawa", 224, "Unread");
+addBookToLibrary("There's No Such Thing as an Easy Job", "Kikuko Tsumura", 416, "Finished", "Yes");
+addBookToLibrary("If You Should Fail", "Joe Moran", 168, "Finished", "Yes");
+addBookToLibrary("The Myth of Sisyphus and Other Essays", "Albert Camus", 224, "Reading", "No");
+addBookToLibrary("Semicolon: The Past, Present, and Future of a Misunderstood Mark", "Cecelia Watson", 224, "Reading", "No");
+addBookToLibrary("Sweet Bean Paste", "Durian Sukegawa", 224, "Unread", "No");
 
 displayBooks();

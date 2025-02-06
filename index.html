@@ -32,11 +32,21 @@
       <div>
         <label for="status">Status:</label>
         <div class="select-wrapper">
-          <select name="status" id="status">
+          <select name="status" id="status" name="status">
             <option value="finished" selected>Finished</option>
             <option value="reading">Reading</option>
             <option value="unread">Unread</option>
             <option value="dropped">Dropped</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <label for="fave">Fave?</label>
+        <div class="select-wrapper">
+          <select name="fave" id="fave" name="status">
+            <option value="yes">Yes</option>
+            <option value="no" selected>No</option>
           </select>
         </div>
       </div>
