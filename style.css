@@ -58,6 +58,7 @@ body{
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 50px;
 
   font-family: Avenir, Montserrat, Corbel, 'URW Gothic', source-sans-pro, sans-serif;
   background-color: var(--dark);
@@ -67,7 +68,31 @@ body{
 
 h1{
   font-size: 2.5rem;
-  margin: 50px 0;
+  margin-top: 50px;
+}
+
+button.add-book{
+  background-color: var(--light);
+  color: var(--dark);
+  padding: 13px 30px 10px 30px;
+  border: 3px solid var(--dark);
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button.add-book:hover,
+button.add-book:focus{
+  background-color: var(--dark);
+  color: var(--light);
+  border: 3px dashed var(--light);
+}
+
+/* modal */
+
+::backdrop{
+  background-color: var(--dark);
+  opacity: 0.75;
 }
 
 .full-wrap{

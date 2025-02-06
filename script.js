@@ -41,7 +41,8 @@ function displayBooks(){
     }
     fullWrap.appendChild(div)
   }
-}
+};
+
 
 addBookToLibrary("There's No Such Thing as an Easy Job", "Kikuko Tsumura", 416, "finished");
 addBookToLibrary("If You Should Fail", "Joe Moran", 168, "finished");
@@ -50,3 +51,18 @@ addBookToLibrary("Semicolon: The Past, Present, and Future of a Misunderstood Ma
 addBookToLibrary("Sweet Bean Paste", "Durian Sukegawa", 224, "unread");
 
 displayBooks();
+
+
+const dialog = document.querySelector("dialog");
+const showButton = document.querySelector(".add-book");
+const closeButton = document.querySelector(".close-dialog");
+
+showButton.addEventListener("click", () =>{
+  dialog.showModal();
+});
+
+closeButton.addEventListener("click", () =>{
+  dialog.close();
+});
+
+
