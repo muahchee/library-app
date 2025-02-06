@@ -196,8 +196,9 @@ button.submit:focus{
 
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 300px));
-  grid-auto-rows: 480px;
+  grid-auto-rows: 520px;
   gap: 50px;
+  place-content: center;
 
   margin-bottom: 50px;
 }

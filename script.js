@@ -12,7 +12,6 @@ function Book(title, author, pages, status, fave){
 function FaveBook(fave){
   this.fave = fave;
 
-
 }
 
 Object.setPrototypeOf(Book.prototype, FaveBook.prototype);
@@ -87,18 +86,19 @@ function makeFaveBtn(){
       //change fave text
       e.target.parentElement.querySelector("p:last-of-type").textContent = "Yes";
 
+      //change fave in arr
+      myLibrary[e.target.parentElement.dataset.indexNumber].fave = "Yes"
+      
+
     } else{
+      //change star
       e.target.parentElement.querySelector(".star").textContent = "☆"
 
+      //change fave text
       e.target.parentElement.querySelector("p:last-of-type").textContent = "No";
-    }
-  }
 
-  function initialStars(){
-    if ( div.querySelector("p:last-of-type").textContent === "Yes"){
-      div.querySelector(".star").textContent = "★";
-    } else{
-      div.querySelector(".star").textContent = "☆";
+      //change fave in arr
+      myLibrary[e.target.parentElement.dataset.indexNumber].fave = "No"
     }
   }
 
@@ -183,7 +183,7 @@ function displayAddedBook(){
     div.appendChild(makeRemoveBtn());
 
     //setting initial fave stars
-    if ( div.querySelector("p:last-of-type").textContent === "Yes"){
+    if (div.querySelector("p:last-of-type").textContent === "yes"){
       div.querySelector(".star").textContent = "★";
     } else{
       div.querySelector(".star").textContent = "☆";
