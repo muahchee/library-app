@@ -67,15 +67,10 @@ closeButton.addEventListener("click", () =>{
   dialog.close();
 });
 
-//adding of the book
-
-//create selector for submit button
-//add event listener to submit button. when clicked,
-  //create selectors for each form input (e.g. newTitle)
-  //invoke addBookToLibrary using selectors
-
+//adding the book to grid
 const submitButton = document.querySelector(".submit");
 
+// display recently added book
 function displayAddedBook(){
   for (let i = myLibrary.length - 1; i < myLibrary.length; i++){
     const div = document.createElement("div");
@@ -115,4 +110,9 @@ submitButton.addEventListener("click", () =>{
   
   displayAddedBook();
 
+  // restores to default values
+  document.querySelector("#title").value = "";
+  document.querySelector("#author").value = "";
+  document.querySelector("#pages").value = "";
+  document.querySelector("#status").value = 'finished';
 });
