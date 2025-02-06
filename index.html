@@ -24,14 +24,16 @@
       <input type="tel" id="pages" name="pages">
 
       <label for="status">Status:</label>
-      <select name="status" id="status">
-        <option value="finished" selected>Finished</option>
-        <option value="reading">Reading</option>
-        <option value="unread">Unread</option>
-        <option value="dropped">Dropped</option>
-      </select>
+      <div class="select-wrapper">
+        <select name="status" id="status">
+          <option value="finished" selected>Finished</option>
+          <option value="reading">Reading</option>
+          <option value="unread">Unread</option>
+          <option value="dropped">Dropped</option>
+        </select>
+      </div>
 
-      <button type="submit">Add Book</button>
+      <button class="submit" type="submit">Add Book</button>
     </form>
   </dialog>
 
