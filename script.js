@@ -52,7 +52,9 @@ addBookToLibrary("Sweet Bean Paste", "Durian Sukegawa", 224, "unread");
 
 displayBooks();
 
+// user adds book
 
+// open and close "add book" form
 const dialog = document.querySelector("dialog");
 const showButton = document.querySelector(".add-book");
 const closeButton = document.querySelector(".close-dialog");
@@ -65,4 +67,52 @@ closeButton.addEventListener("click", () =>{
   dialog.close();
 });
 
+//adding of the book
 
+//create selector for submit button
+//add event listener to submit button. when clicked,
+  //create selectors for each form input (e.g. newTitle)
+  //invoke addBookToLibrary using selectors
+
+const submitButton = document.querySelector(".submit");
+
+function displayAddedBook(){
+  for (let i = myLibrary.length - 1; i < myLibrary.length; i++){
+    const div = document.createElement("div");
+    div.setAttribute("class", "card")
+
+    for (let j = 0; j < Object.keys(myLibrary[i]).length; j++){
+      
+      const h2 = document.createElement("h2");
+      h2.textContent = 
+        Object.keys(myLibrary[i])[j]
+        //capitalise
+        .charAt(0)
+        .toUpperCase() 
+        + Object.keys(myLibrary[i])[j].slice(1);
+
+      const p = document.createElement("p");
+      p.textContent =
+        //get value from selected key
+        myLibrary[i][Object.keys(myLibrary[i])[j]];
+
+      div.appendChild(h2);
+      div.appendChild(p);
+    }
+    fullWrap.appendChild(div)
+  } 
+}
+
+submitButton.addEventListener("click", () =>{
+  event.preventDefault();
+
+  const newTitle = document.querySelector("#title").value;
+  const newAuthor = document.querySelector("#author").value;
+  const newPages = document.querySelector("#pages").value;
+  const newStatus = document.querySelector("#status").value;
+
+  addBookToLibrary(newTitle, newAuthor, newPages, newStatus)
+  
+  displayAddedBook();
+
+});
