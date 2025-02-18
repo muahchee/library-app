@@ -1,20 +1,20 @@
 const myLibrary = [];
 
-function Book(title, author, pages, status, fave){
-  this.title = title,
-  this.author = author,
-  this.pages = pages,
-  this.status = status;
+class Book{
 
-  FaveBook.call(this, fave);
+  constructor (title, author, pages, status, fave){
+    this.title = title;
+
+    this.author = author;
+
+    this.pages = pages;
+
+    this.status = status;
+
+    this.fave = fave;
+  }
+  
 }
-
-function FaveBook(fave){
-  this.fave = fave;
-
-}
-
-Object.setPrototypeOf(Book.prototype, FaveBook.prototype);
 
 function addBookToLibrary(title, author, pages, status, fave){
   const newBook = new Book(title, author, pages, status, fave);
