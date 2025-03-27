@@ -1,6 +1,8 @@
 /* reset */
 /* 1. Use a more-intuitive box-sizing model */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -17,19 +19,33 @@ body {
 }
 
 /* 5. Improve media defaults */
-img, picture, video, canvas, svg {
+img,
+picture,
+video,
+canvas,
+svg {
   display: block;
   max-width: 100%;
 }
 
 /* 6. Inherit fonts for form controls */
-label, input, button, textarea, select {
+label,
+input,
+button,
+textarea,
+select {
   font: inherit;
   display: block;
 }
 
 /* 7. Avoid text overflows */
-p, h1, h2, h3, h4, h5, h6 {
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   overflow-wrap: break-word;
 }
 
@@ -37,45 +53,53 @@ p, h1, h2, h3, h4, h5, h6 {
 p {
   text-wrap: pretty;
 }
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   text-wrap: balance;
 }
 
 /*
   9. Create a root stacking context
 */
-#root, #__next {
+#root,
+#__next {
   isolation: isolate;
 }
 
 /* main css */
-*{
+* {
   --light: #b8c2b9;
   --dark: #382b26;
   --warning: #752020;
   --fave: rgb(255, 175, 3);
 }
 
-body{
+body {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 50px;
 
-  font-family: Avenir, Montserrat, Corbel, 'URW Gothic', source-sans-pro, sans-serif;
+  font-family: Avenir, Montserrat, Corbel, "URW Gothic", source-sans-pro,
+    sans-serif;
   background-color: var(--dark);
   color: var(--light);
   font-size: 1.1rem;
 }
 
-h1{
+h1 {
   font-size: 3rem;
-  font-family: Superclarendon, 'Bookman Old Style', 'URW Bookman', 'URW Bookman L', 'Georgia Pro', Georgia, serif;
+  font-family: Superclarendon, "Bookman Old Style", "URW Bookman",
+    "URW Bookman L", "Georgia Pro", Georgia, serif;
   margin-top: 50px;
 }
 
-button.add-book{
+button.add-book {
   background-color: var(--dark);
   color: var(--light);
   border: 3px dashed var(--light);
@@ -86,7 +110,7 @@ button.add-book{
 }
 
 button.add-book:hover,
-button.add-book:focus{
+button.add-book:focus {
   border: 3px solid var(--light);
   background-color: var(--light);
   color: var(--dark);
@@ -94,12 +118,12 @@ button.add-book:focus{
 
 /* modal */
 
-::backdrop{
+::backdrop {
   background-color: var(--dark);
   opacity: 0.75;
 }
 
-dialog{
+dialog {
   /* centers it */
   position: absolute;
   top: 50%;
@@ -113,10 +137,9 @@ dialog{
   /* overflow-y: scroll;
   scrollbar-color: var(--dark) var(--light); */
   padding: 40px 25px;
-
 }
 
-form{
+form {
   display: flex;
   flex-direction: column;
   gap: 30px;
@@ -124,20 +147,21 @@ form{
   position: relative;
 }
 
-input, select{
+input,
+select {
   appearance: none;
 
   background-color: inherit;
   color: inherit;
 }
 
-input{
+input {
   border: none;
   border-bottom: 3px solid var(--dark);
   /* padding: 5px 10px; */
 }
 
-select{
+select {
   border: 3px solid var(--dark);
   padding: 10px 15px;
   width: 100%;
@@ -145,13 +169,12 @@ select{
   cursor: pointer;
 }
 
-.select-wrapper{
+.select-wrapper {
   position: relative;
   margin-top: 10px;
-
 }
 
-.select-wrapper::after{
+.select-wrapper::after {
   content: "▼";
   position: absolute;
   top: 5px;
@@ -159,11 +182,11 @@ select{
   font-size: 2rem;
 }
 
-label{
+label {
   font-size: 1.3rem;
 }
 
-.close-dialog{
+.close-dialog {
   position: absolute;
   right: 5px;
   top: 3px;
@@ -174,7 +197,7 @@ label{
   cursor: pointer;
 }
 
-button.submit{
+button.submit {
   background-color: var(--light);
   color: var(--dark);
   border: 3px dashed var(--dark);
@@ -186,13 +209,13 @@ button.submit{
 }
 
 button.submit:hover,
-button.submit:focus{
+button.submit:focus {
   background-color: var(--dark);
   color: var(--light);
   border: 3px solid var(--dark);
 }
 
-.full-wrap{
+.full-wrap {
   width: min(100%, 1000px);
 
   display: grid;
@@ -204,7 +227,7 @@ button.submit:focus{
   margin-bottom: 50px;
 }
 
-.card{
+.card {
   /* border: 3px solid var(--dark); */
   background-color: var(--light);
   color: var(--dark);
@@ -215,17 +238,17 @@ button.submit:focus{
   position: relative;
 }
 
-.card p:first-of-type{
+.card p:first-of-type {
   font-weight: bold;
 }
 
-button.star{
+button.star {
   position: absolute;
   top: 0;
   right: 0;
 
   /* background-color: var(--dark); */
-  color:  var(--dark);
+  color: var(--dark);
 
   padding: 5px;
   font-size: 1.8rem;
@@ -236,10 +259,10 @@ button.star{
   background-color: inherit;
 }
 
-
-.card h2{
+.card h2 {
   font-size: 1.3rem;
-  font-family: Superclarendon, 'Bookman Old Style', 'URW Bookman', 'URW Bookman L', 'Georgia Pro', Georgia, serif;;
+  font-family: Superclarendon, "Bookman Old Style", "URW Bookman",
+    "URW Bookman L", "Georgia Pro", Georgia, serif;
   background-color: var(--dark);
   color: var(--light);
   display: inline-block;
@@ -247,11 +270,11 @@ button.star{
   margin-bottom: 10px;
 }
 
-.card p{
+.card p {
   margin-bottom: 10px;
 }
 
-button.remove-book{
+button.remove-book {
   margin: auto;
 
   background-color: var(--light);
@@ -265,7 +288,7 @@ button.remove-book{
 }
 
 button.remove-book:hover,
-button.remove-book:focus{
+button.remove-book:focus {
   background-color: var(--warning);
   color: var(--light);
   border: 3px solid var(--warning);
