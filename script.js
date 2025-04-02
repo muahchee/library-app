@@ -38,7 +38,7 @@ function displayBooks() {
       const h2 = document.createElement("h2");
       h2.textContent =
         Object.keys(myLibrary[i])
-          [j]//capitalise
+          [j] //capitalise
           .charAt(0)
           .toUpperCase() + Object.keys(myLibrary[i])[j].slice(1);
 
@@ -152,7 +152,7 @@ function displayAddedBook() {
       const h2 = document.createElement("h2");
       h2.textContent =
         Object.keys(myLibrary[i])
-          [j]//capitalise
+          [j] //capitalise
           .charAt(0)
           .toUpperCase() + Object.keys(myLibrary[i])[j].slice(1);
 
@@ -179,26 +179,132 @@ function displayAddedBook() {
   }
 }
 
-submitButton.addEventListener("click", () => {
-  event.preventDefault();
+const form = document.querySelector("form");
 
-  const newTitle = document.querySelector("#title").value;
-  const newAuthor = document.querySelector("#author").value;
-  const newPages = document.querySelector("#pages").value;
-  const newStatus = document.querySelector("#status").value;
-  const newFave = document.querySelector("#fave").value;
+const title = document.querySelector("#title");
+const titleError = document.querySelector("#title + span.error");
 
-  addBookToLibrary(newTitle, newAuthor, newPages, newStatus, newFave);
+const author = document.querySelector("#author");
+const authorError = document.querySelector("#author + span.error");
 
-  displayAddedBook();
+const pages = document.querySelector("#pages");
+const pagesError = document.querySelector("#pages + span.error");
 
-  // restores to default values
-  document.querySelector("#title").value = "";
-  document.querySelector("#author").value = "";
-  document.querySelector("#pages").value = "";
-  document.querySelector("#status").value = "finished";
-  document.querySelector("#fave").value = "no";
+const currentStatus = document.querySelector("#status");
+const currentStatusError = document.querySelector("#status + span.error");
+
+const fave = document.querySelector("#fave");
+const faveError = document.querySelector("#fave + span.error");
+
+title.addEventListener("input", (event) => {
+  if (title.validity.valid) {
+    titleError.textContent = "";
+    titleError.className = "error";
+  } else {
+    showError(title, titleError);
+  }
 });
+
+author.addEventListener("input", (event) => {
+  if (author.validity.valid) {
+    authorError.textContent = "";
+    authorError.className = "error";
+  } else {
+    showError(author, authorError);
+  }
+});
+
+pages.addEventListener("input", (event) => {
+  if (pages.validity.valid) {
+    pagesError.textContent = "";
+    pagesError.className = "error";
+  } else {
+    showError(pages, pagesError);
+  }
+});
+
+currentStatus.addEventListener("input", (event) => {
+  if (currentStatus.validity.valid) {
+    currentStatusError.textContent = "";
+    currentStatusError.className = "error";
+  } else {
+    showError(currentStatus, currentStatusError);
+  }
+});
+
+fave.addEventListener("input", (event) => {
+  if (fave.validity.valid) {
+    faveError.textContent = "";
+    faveError.className = "error";
+  } else {
+    showError(fave, faveError);
+  }
+});
+
+form.addEventListener("submit", (event) => {
+  if (!title.validity.valid) {
+    showError(title, titleError);
+    event.preventDefault();
+  }
+});
+
+function showError(field, fieldError) {
+  if (field.validity.valueMissing) {
+    fieldError.textContent = "This field is required.";
+  }
+  fieldError.className = "error active";
+}
+
+form.addEventListener("submit", (e) => {
+  if (!title.validity.valid) {
+    showError(title, titleError);
+    e.preventDefault();
+
+  } else if (!author.validity.valid) {
+    showError(author,authorError);
+    e.preventDefault(); 
+
+  } else if (!pages.validity.valid) {
+    showError(pages,pagesError);
+    e.preventDefault(); 
+
+  }else if (!currentStatus.validity.valid) {
+    showError(currentStatus,currentStatusError);
+    e.preventDefault(); 
+
+  }else if (!fave.validity.valid) {
+    showError(fave,faveError);
+    e.preventDefault(); 
+
+  }else{
+
+      e.preventDefault();
+
+      const newTitle = title.value;
+      const newAuthor = author.value;
+      const newPages = pages.value;
+      const newStatus = currentStatus.value;
+      const newFave = fave.value;
+    
+      addBookToLibrary(newTitle, newAuthor, newPages, newStatus, newFave);
+    
+      displayAddedBook();
+    
+      // restores to default values
+      document.querySelector("#title").value = "";
+      document.querySelector("#author").value = "";
+      document.querySelector("#pages").value = "";
+      document.querySelector("#status").value = "finished";
+      document.querySelector("#fave").value = "no";
+    
+      submitButton.parentElement.parentElement.close();
+
+    }
+  }
+)
+     
+
+  
 
 // initial books
 addBookToLibrary(
